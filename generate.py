@@ -2,6 +2,8 @@
 
 import random
 import math
+import pathlib
+import os
 
 
 FILE_SIGNAL = "signal.h"
@@ -11,30 +13,41 @@ NL = "\n"
 DNL = "\n\n"
 
 
-def real_gen_iter():
+def file_append(appendix, fname):
+
+	if not os.path.exists(fname):
+		mode = 0o774
+		path = pathlib.Path(str(fname)).parent.resolve()
+
+		if pathlib.Path(__file__).parent.resolve() != path and not os.path.exists(path):
+			os.makedirs(str(path), mode)
+
+		with open(fname, 'w') as f:
+			pass
+
+	with open(fname, "a") as f:
+		f.write(appendix)
+
+
+def real_gen_iter(typestr, suffix="", tp=int):
 	yield "#include <cstdint>" + NL
 	yield "#include <array>" + NL
 	yield NL
-	yield "using ValueType = std::int16_t" + NL
 	yield "static constexpr std::size_t kSignalLen = %d;" % SIGNAL_LEN
 	yield NL
-	yield "std::array<std::int16_t, kSignalLen * 2> signal {{" + NL
+	yield "std::array<%s, kSignalLen * 2> signal%s {{" % (typestr, suffix) + NL
 
 	for i in range(SIGNAL_LEN):
-		# yield '\t' + str(int(random.random() * CEIL)) + "," + NL  # Real part
-		yield '\t' + str(int(math.cos(i) * CEIL)) + "," + NL  # Real part
+		# yield '\t' + str(tp(random.random() * CEIL)) + "," + NL  # Real part
+		yield '\t' + str(tp(math.cos(i) * CEIL)) + "," + NL  # Real part
 		yield '\t' + "0," + NL  # Imaginary part
 
 	yield "}};" + NL
 
 
-def file_save(filename, content):
-	with open(filename, 'w') as f:
-		f.write(content)
-
-
 def main():
-	file_save(FILE_SIGNAL, ''.join(real_gen_iter()))
+	file_append(''.join(real_gen_iter("std::int16_t", "", int)), FILE_SIGNAL)
+
 
 if __name__ == "__main__":
 	main()
