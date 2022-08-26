@@ -95,3 +95,4 @@ set(COMPONENT_PRIV_INCLUDEDIRS  "espdsp/modules/dotprod/float"
 add_library(espdsp ${COMPONENT_SRCS})
 target_include_directories(espdsp PUBLIC ${COMPONENT_ADD_INCLUDEDIRS})
 target_include_directories(espdsp PRIVATE ${COMPONENT_PRIV_INCLUDEDIRS})
+target_compile_options(espdsp PUBLIC "-g")
