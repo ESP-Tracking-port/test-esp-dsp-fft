@@ -5,7 +5,7 @@ import random
 
 FILE_SIGNAL = "signal.h"
 CEIL = 255
-SIGNAL_LEN = 1024
+SIGNAL_LEN = 20
 NL = "\n"
 DNL = "\n\n"
 
@@ -19,7 +19,7 @@ def real_gen_iter():
 		yield '\t' + "0," + NL  # Imaginary part
 
 	yield "};" + NL
-	yield "static constexpr std::size_t kSignalLen = sizeof(signal) / sizeof(signal[0]);"
+	yield "static constexpr std::size_t kSignalLen = sizeof(signal) / sizeof(signal[0]) / 2;"
 
 
 def file_save(filename, content):
