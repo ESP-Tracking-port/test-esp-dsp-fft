@@ -5,8 +5,10 @@
 #include "signal.h"
 #include "signalf32.h"
 
+static constexpr const char *kDelimiterDefault = "\n";
+
 template <class T>
-void arrout(const T &aIterable, std::size_t aSize, const char *aDelimiter = ", ")
+void arrout(const T &aIterable, std::size_t aSize, const char *aDelimiter = kDelimiterDefault)
 {
 	using ValueType = decltype(aIterable[0]);
 	std::size_t count = 0;
@@ -15,7 +17,7 @@ void arrout(const T &aIterable, std::size_t aSize, const char *aDelimiter = ", "
 }
 
 template <class T>
-void arrouts(const T &arr, const char *aDelimiter = ", ")
+void arrouts(const T &arr, const char *aDelimiter = kDelimiterDefault)
 {
 	arrout(arr.data(), arr.size(), aDelimiter);
 }
