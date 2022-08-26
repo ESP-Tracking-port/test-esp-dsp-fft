@@ -25,7 +25,7 @@ void arrout(const T &aIterable, std::size_t aSize, std::size_t aStep = 1, const 
 
 int main()
 {
-	dsps_fft2r_init_sc16(sCoefficients, kSignalLen);
+	dsps_fft2r_init_sc16(sCoefficients, kSignalLen / 2);
 	dsps_fft2r_sc16_ansi_(signal, kSignalLen / 2, sCoefficients);
 	arrout(signal, kSignalLen);
 
