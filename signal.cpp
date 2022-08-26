@@ -23,16 +23,15 @@ void arrouts(const T &arr, const char *aDelimiter = kDelimiterDefault)
 
 int testu16()
 {
-	static std::array<std::int16_t, 4096> sCoefficients;
-	static auto buf = signal;
-//	arrouts(buf);
+	std::array<std::int16_t, 1024> sCoefficients;
+	arrouts(signal);
 	dsps_fft2r_init_sc16(sCoefficients.data(), sCoefficients.size());
-	dsps_fft2r_sc16_ansi_(buf.data(), kSignalLen, sCoefficients.data());
-	dsps_bit_rev_sc16_ansi(buf.data(), buf.size());
-//	arrouts(buf);
-	dsps_fft2r_sc16_ansi_(buf.data(), kSignalLen, sCoefficients.data());
-	dsps_bit_rev_sc16_ansi(buf.data(), buf.size());
-	arrout(buf, kSignalLen * 2);
+	dsps_fft2r_sc16_ansi_(signal.data(), kSignalLen, sCoefficients.data());
+	dsps_bit_rev_sc16_ansi(signal.data(), signal.size());
+//	arrouts(signal);
+	dsps_fft2r_sc16_ansi_(signal.data(), kSignalLen, sCoefficients.data());
+	dsps_bit_rev_sc16_ansi(signal.data(), signal.size());
+//	arrout(signal, kSignalLen * 2);
 
 	return 0;
 }
