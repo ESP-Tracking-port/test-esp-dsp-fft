@@ -27,8 +27,8 @@ int testu16()
 	std::array<std::int16_t, kSignalLen * 2> sigCopy = signal;
 	std::transform(sigCopy.begin(), sigCopy.end(), sigCopy.begin(),
 		[](std::int16_t aSig) {return aSig * kSignalLen; });  // Note the overflow
-	arrouts(sigCopy);
-//	arrouts(signal);
+//	arrouts(sigCopy);
+	arrouts(signal);
 	dsps_fft2r_init_sc16(sCoefficients.data(), sCoefficients.size());
 	dsps_fft2r_sc16_ansi_(signal.data(), kSignalLen, sCoefficients.data());
 	dsps_bit_rev_sc16_ansi(signal.data(), signal.size());
