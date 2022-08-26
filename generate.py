@@ -8,7 +8,7 @@ import os
 
 FILE_SIGNAL = "signal.h"
 FILE_SIGNAL_FLOAT = "signalf32.h"
-CEIL = 10
+CEIL = 255
 SIGNAL_LEN = 200
 NL = "\n"
 DNL = "\n\n"
