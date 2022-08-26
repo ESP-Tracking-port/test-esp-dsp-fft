@@ -1,0 +1,3 @@
+[submodule "libs/espdsp/espdsp"]
+	path = libs/espdsp/espdsp
+	url = git@github.com:ESP-Tracking-port/esp-dsp.git
