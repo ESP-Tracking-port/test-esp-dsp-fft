@@ -1,3 +1,5 @@
+project(espdsp)
+set(CMAKE_CXX_STANDARD 11)
 set(COMPONENT_SRCS  "espdsp/modules/common/misc/dsps_pwroftwo.cpp"
                     "espdsp/modules/dotprod/float/dsps_dotprod_f32_ansi.c"
                     "espdsp/modules/dotprod/float/dsps_dotprode_f32_ansi.c"
@@ -80,6 +82,7 @@ set(COMPONENT_ADD_INCLUDEDIRS   "espdsp/modules/dotprod/include"
                                 "espdsp/modules/dct/include"
                                 "espdsp/modules/conv/include"
                                 "espdsp/modules/common/include"
+                                "espdsp/modules/common/include_sim"
                                 "espdsp/modules/hal"
 # EKF files
                                 "espdsp/modules/kalman/ekf/include"
