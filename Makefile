@@ -12,5 +12,5 @@ build: signal.h
 
 clean:
 	rm -rf build
-	rm signal.h
+	rm -f signal.h
 
